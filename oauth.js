@@ -48,6 +48,10 @@ module.exports = new (function(){
 			console.error('OAuth requires opts.oauth_consumer_key');
 		}
 
+		if(uri.indexOf("api.fitbit.com") >= 0){
+			delete opts.oauth_callback;
+		}
+
 		// Seperate querystring from path
 		var path = uri.replace(/[\?\#].*/,''),
 			qs = querystring.parse(url.parse(uri).query);
